@@ -31,8 +31,7 @@ public class MobilenocTaskApplicationTests {
     public void getTaskByInValidId() {
         taskService.getTaskById(10);
     }
-
-
+    
     @Test(expected = IllegalArgumentException.class)
     public void insertTask() {
         Task task = new Task(null, "zaid description");
