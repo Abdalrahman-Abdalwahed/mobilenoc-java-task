@@ -4,14 +4,17 @@ spring:
       enabled: true
   datasource:
     platform: h2
-    url: jdbc:h2:~/testdb
+    url: jdbc:h2:mem:testdb
     driverClassName: org.h2.Driver
     data-username: sa
     data-password:
   flyway:
-    url: jdbc:h2:~/testdb
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
     user: sa
+    baseline-on-migrate: true
+    locations: filesystem:src/main/resources/db/migration, classpath:com.mobilenoc.www.mobilenoctask.db.migration
 
 datasource:
   tableName: "Task_definition"
   mirrorTableName: "Task_definition_mirror"
+

@@ -19,6 +19,11 @@
 	</properties>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
@@ -52,8 +57,12 @@
 				<artifactId>flyway-maven-plugin</artifactId>
 				<version>5.2.4</version>
 				<configuration>
-					<url>jdbc:h2:~/testdb</url>
+					<url>jdbc:h2:mem:testdb</url>
 					<user>sa</user>
+					<locations>
+						<location>filesystem:src/main/resources/db/migration</location>
+						<location>classpath:com.mobilenoc.www.mobilenoctask.db.migration</location>
+					</locations>
 				</configuration>
 				<dependencies>
 					<dependency>
